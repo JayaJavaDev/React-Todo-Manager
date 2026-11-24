@@ -4,9 +4,15 @@ const Reducer = (state, action) => {
 
   switch (action.type) {
 
+    // GET TODO
+    case "SET_TODOS":
+      return action.payload
+
+    // ADD TODO
     case "ADD_TODO":
       return [...state, action.payload]
 
+    // UPDATE TODO
     case "UPDATE_TODO":
       return state.map((todo) =>
         todo.id === action.payload.id
@@ -18,6 +24,7 @@ const Reducer = (state, action) => {
           : todo
       )
 
+    // UPDATE STATUS
     case "UPDATE_STATUS":
       return state.map((todo) =>
         todo.id === action.payload.id
@@ -28,6 +35,7 @@ const Reducer = (state, action) => {
           : todo
       )
 
+    // DELETE TODO
     case "DELETE_TODO":
       return state.filter(
         (todo) => todo.id !== action.payload
